@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension xmlns="http://www.inkscape.org/namespace/inkscape/extension">
+<name>CustomAttribute</name>
+    <id>nikita_akimov.interplanety.custom_attribute</id>
+    <dependency type="executable" location="extensions">custom_attribute.py</dependency>
+    <param name="ca_namespace" type="string" gui-text="Attribute Namespace:"></param>
+    <param name="ca_name" type="string" gui-text="Attribute Name:"></param>
+    <param name="ca_value" type="string" gui-text="Attribute Value:"></param>
+    <effect>
+        <object-type>all</object-type>
+        <effects-menu>
+            <submenu name="Attributes"/>
+        </effects-menu>
+    </effect>
+    <script>
+        <command reldir="extensions" interpreter="python">custom_attribute.py</command>
+    </script>
+</inkscape-extension>
