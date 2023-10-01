@@ -21,21 +21,22 @@ class CustomAttribute(EffectExtension):
 
     def effect(self):
         # main method for Effect action
-        attribute_name = self.options.ca_name
-        # add namespace
-        if self.options.ca_namespace:
-            attribute_name = self.options.ca_namespace + ':' + self.options.ca_name
-            # if namespace not exists in the namespace map
-            if self.options.ca_namespace not in NSS:
-                namespace_uri = 'http://' + self.options.ca_namespace + '.org/namespace'
-                self.svg.add_namespace(self.options.ca_namespace, namespace_uri)
-                NSS[self.options.ca_namespace] = namespace_uri
-        # add custom attribute for each selected object
-        for selected_obj in self.svg.selection:
-            selected_obj.set(
-                attribute_name,
-                self.options.ca_value
-            )
+        if self.options.ca_name:
+            attribute_name = self.options.ca_name
+            # add namespace
+            if self.options.ca_namespace:
+                attribute_name = self.options.ca_namespace + ':' + self.options.ca_name
+                # if namespace not exists in the namespace map
+                if self.options.ca_namespace not in NSS:
+                    namespace_uri = 'http://' + self.options.ca_namespace + '.org/namespace'
+                    self.svg.add_namespace(self.options.ca_namespace, namespace_uri)
+                    NSS[self.options.ca_namespace] = namespace_uri
+            # add custom attribute for each selected object
+            for selected_obj in self.svg.selection:
+                selected_obj.set(
+                    attribute_name,
+                    self.options.ca_value
+                )
 
     def add_arguments(self, pars):
         # parse arguments from the UI
